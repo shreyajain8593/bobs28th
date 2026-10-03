@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbf4e8;--card:#fffaf1;--ink:#2b2220;--mute:#7a6a62;--acc:#e8a317;--rose:#d9667a;--line:#ead9bd;--hl:#fbe3a6;--okb:#bfe3b4;--okt:#1d3a15;--badb:#f6c1c9;--badt:#6b1426;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1715;--card:#2a211e;--ink:#f6ebdc;--mute:#b9a89c;--line:#43342d;--hl:#5a4521;--okb:#2f5a2a;--okt:#e3f5dd;--badb:#6b2a36;--badt:#ffd9df}}
+:root[data-theme="dark"]{--bg:#1d1715;--card:#2a211e;--ink:#f6ebdc;--mute:#b9a89c;--line:#43342d;--hl:#5a4521;--okb:#2f5a2a;--okt:#e3f5dd;--badb:#6b2a36;--badt:#ffd9df}
+html,body{height:100%;margin:0}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;line-height:1.6;overflow:hidden}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.15;margin:0}
+.scene{position:fixed;inset:0;overflow-y:auto;overflow-x:hidden;background:var(--bg);display:none;-webkit-overflow-scrolling:touch}
+#sc0{display:block}
+section{max-width:760px;margin:0 auto;padding:max(56px,env(safe-area-inset-top)) 20px 90px}
+.eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:.72rem;color:var(--rose);margin-bottom:10px}
+h2{font-size:clamp(1.7rem,6vw,2.5rem);margin-bottom:10px}
+.sub{color:var(--mute);margin:0 0 24px}
+.c{text-align:center}
+.ph{width:100%;height:100%;min-height:110px;border:1.5px dashed var(--line);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--mute);font-size:.82rem;gap:4px;background:rgba(232,163,23,.07)}
+.ph span{font-size:1.6rem}
+img{border-radius:10px;display:block;width:100%;height:100%;object-fit:cover}
+.btn{background:var(--ink);color:var(--bg);border:0;border-radius:99px;padding:12px 24px;font:500 1rem 'DM Sans',sans-serif;cursor:pointer}
+.btn.alt{background:var(--acc);color:#2b2220}.btn:disabled{opacity:.4;cursor:default}
+.btn.ghost{background:transparent;color:var(--mute);border:1.5px solid var(--line)}
+/* hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.hero h1{font-size:clamp(2.6rem,13vw,5.2rem)}.hero h1 em{color:var(--acc);font-weight:400}
+.aside{max-width:420px;color:var(--mute);font-size:.92rem;margin:10px 0 22px}
+.infant{width:190px;height:230px;transform:rotate(-3deg);background:var(--card);padding:10px 10px 28px;border:1px solid var(--line);border-radius:6px;box-shadow:0 10px 30px rgba(0,0,0,.12);margin:6px 0 22px}
+.warn{border:1.5px solid var(--rose);color:var(--rose);border-radius:99px;padding:8px 18px;font-size:.85rem;margin-bottom:22px}
+/* balloon */
+.bwrap{text-align:center;margin-top:34px}
+.balloon{background:none;border:0;cursor:pointer;font-size:4rem;line-height:1;animation:bob 2.6s ease-in-out infinite;color:var(--ink)}
+.balloon span{display:block;font:500 .85rem 'DM Sans',sans-serif;color:var(--mute);margin-top:4px}
+.balloon.pop{animation:none;transform:scale(1.5);opacity:0;transition:.25s}
+@keyframes bob{50%{transform:translateY(-12px) rotate(3deg)}}
+/* list */
+.list{counter-reset:n;display:grid;gap:12px;padding:0;list-style:none}
+.list li{counter-increment:n;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px 14px 58px;position:relative}
+.list li:before{content:counter(n);position:absolute;left:14px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:var(--acc);color:#2b2220;display:grid;place-items:center;font:600 .95rem 'Fraunces',serif}
+/* deck */
+.deck{position:relative;height:450px;max-width:310px;margin:10px auto 14px;touch-action:pan-y;user-select:none}
+.card{position:absolute;inset:0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 12px 14px;box-shadow:0 12px 30px rgba(0,0,0,.14);display:flex;flex-direction:column;transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .4s;cursor:grab}
+.card .im{flex:1;min-height:0}
+.card p{margin:12px 4px 0;font:italic 1.02rem/1.35 'Fraunces',serif;min-height:4.2em;text-align:left}
+.card .no{font-size:.7rem;letter-spacing:.14em;color:var(--rose);margin:10px 4px 0;text-align:left}
+#cnt{color:var(--mute)}
+/* timeline */
+#rail{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0;margin:8px 0 22px}
+.dot{display:flex;flex-direction:column;align-items:center;font-size:.7rem;color:var(--mute);cursor:pointer;background:none;border:0;padding:0 2px}
+.dot i{width:14px;height:14px;border-radius:50%;background:var(--acc);display:block;margin-bottom:4px}
+.dot.cur i{box-shadow:0 0 0 5px rgba(232,163,23,.3)}
+.seg{width:18px;height:2px;background:var(--acc);margin-bottom:18px}
+#tcard{max-width:300px;margin:0 auto 18px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;box-shadow:0 10px 26px rgba(0,0,0,.12);animation:rise .6s}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}}
+#tcard .im{height:320px}#tcard b{display:block;font:600 2rem 'Fraunces',serif;color:var(--acc);margin-top:8px}
+/* crossword */
+.wrap{overflow-x:auto;padding:6px 0 10px}
+#grid{display:grid;width:max-content;margin:0 auto;gap:2px}
+.cell{width:28px;height:28px;position:relative}
+.cell.on{background:var(--card);border:1.5px solid var(--line);border-radius:5px}
+.cell.hl{background:var(--hl)}.cell.act{outline:2px solid var(--acc);z-index:1}
+.cell.ok{background:var(--okb)}.cell.bad{background:var(--badb);animation:shake .4s}
+@keyframes shake{25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+.cell input{position:absolute;inset:0;width:100%;height:100%;border:0;background:transparent;text-align:center;font:600 .95rem 'Fraunces',serif;text-transform:uppercase;color:var(--ink);padding:6px 0 0;caret-color:transparent;border-radius:5px}
+.cell.ok input{color:var(--okt)}.cell.bad input{color:var(--badt)}.cell input:focus{outline:0}
+.cell i{position:absolute;top:1px;left:3px;font:500 .52rem 'DM Sans',sans-serif;font-style:normal;color:var(--mute);pointer-events:none}
+#lives{font-size:1.1rem;margin:0 0 10px}
+#bar{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:12px 0}
+#bar b{color:var(--rose);margin-right:6px}#bh{color:var(--mute);font-style:italic;margin-top:6px}
+.btns{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+#msg{color:var(--mute);font-size:.92rem}
+#lip{display:none;margin:20px auto;max-width:260px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+#lip .im{height:300px}#lip p{margin:8px 0 0;font:italic 1rem 'Fraunces',serif}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+@media(max-width:560px){.cols{grid-template-columns:1fr}}
+.cols h3{font:600 .78rem 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--rose);margin:0 0 8px}
+.cols ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.cols li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:9px 12px;font-size:.9rem;cursor:pointer;display:flex;gap:8px;flex-wrap:wrap}
+.cols li .n{font-weight:600;color:var(--rose);min-width:20px}.cols li .s{margin-left:auto;font-weight:600}
+.cols li.ok{border-color:#7fbf70}.cols li.ok .s{color:#4c9a3c}
+.cols li em{flex-basis:100%;color:var(--mute)}
+#gu{display:none;text-align:center;margin:24px 0;padding:22px;border-radius:18px;background:var(--card);border:1px solid var(--line)}
+#gu ul{list-style:none;padding:0;margin:12px 0 0;text-align:left;display:grid;gap:6px;font-size:.9rem;color:var(--mute)}
+/* finale */
+.vid{max-width:300px;height:420px;margin:26px auto;border-radius:16px;overflow:hidden;background:var(--card)}
+.vid video{width:100%;height:100%;object-fit:cover}
+.sign{font:italic 1.3rem 'Fraunces',serif;margin-top:20px}
+/* popup + misc */
+#pop{position:fixed;inset:0;z-index:150;display:none;align-items:center;justify-content:center;background:rgba(20,12,10,.55);padding:20px}
+#pcard{max-height:86vh;overflow:auto;background:var(--card);border-radius:22px;padding:26px 22px;max-width:340px;width:100%;text-align:center;animation:zoom .45s cubic-bezier(.2,1.4,.4,1)}
+@keyframes zoom{from{transform:scale(.4);opacity:0}}
+#pcard .em{font-size:3.4rem}#pcard h2{font-size:1.7rem;margin:6px 0}
+#pcard .im{height:240px;margin:12px 0}
+#snd{position:fixed;top:max(10px,env(safe-area-inset-top));right:12px;z-index:120;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:var(--card);cursor:pointer;font-size:1.1rem}
+
+.gift{background:var(--hl);border-left:4px solid var(--acc);border-radius:10px;padding:10px 12px;margin:10px 0;font-size:.95rem;text-align:left}
+.gift b{font-family:'Fraunces',serif;color:var(--rose)}
+.cell.lk{background:var(--line);opacity:.55}
+.cell.gv{background:repeating-linear-gradient(45deg,var(--card),var(--card) 4px,var(--line) 4px,var(--line) 8px)}
+.cols li.gave{border-style:dashed}.gx{flex-basis:100%}
+.list li.hid{display:none}.list li.rise{animation:rise .6s}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}}
+#tall{display:none;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-bottom:16px}
+.tc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px}.tc .im{height:150px}.tc b{font:600 1.3rem 'Fraunces',serif;color:var(--acc)}
+.keyl{list-style:none;padding:0;margin:12px 0;text-align:left;display:grid;gap:6px;font-size:.92rem}
+.keyl small{color:var(--mute)}
+body.mem .sec{display:block!important}
+body.mem .bwrap,body.mem #rn{display:none!important}
+body.mem #rail,body.mem #tcard,body.mem #tnext{display:none!important}
+body.mem #b3{display:block!important}
+body.mem #tall{display:grid}
+body.mem .deck{height:auto;max-width:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+body.mem .card{position:static!important;transform:none!important;opacity:1!important;pointer-events:none!important;height:auto;padding:8px}
+body.mem .card .im{height:150px;flex:none}body.mem .card p{font-size:.85rem;min-height:0}
+body.mem #cnt,body.mem #dh,body.mem #lives{display:none}
+#memc{position:fixed;top:max(10px,env(safe-area-inset-top));left:12px;z-index:120;height:40px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:0 14px;font:500 .8rem 'DM Sans',sans-serif;cursor:pointer}
+body.mem #memc{display:none}
+#sc00{display:block;background:var(--bg);transition:opacity .8s}
+.gw{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px}
+@keyframes pulse{50%{opacity:.4}}
+#giftbtn{position:relative;width:230px;height:250px;background:none;border:0;padding:0;cursor:pointer;animation:wig 2.4s ease-in-out infinite}
+@keyframes wig{0%,60%,100%{transform:rotate(0)}66%{transform:rotate(-4deg)}74%{transform:rotate(4deg)}82%{transform:rotate(-3deg)}90%{transform:rotate(2deg)}}
+.gb{position:absolute;left:12px;right:12px;bottom:0;height:176px;display:flex;filter:drop-shadow(0 12px 18px rgba(0,0,0,.18))}
+.gh{flex:1;background:repeating-linear-gradient(45deg,#e8a317 0 14px,#f2bd45 14px 28px);transition:transform 1.1s cubic-bezier(.5,0,.8,.5),opacity 1s}
+.gh.l{border-radius:12px 0 0 12px}.gh.r{border-radius:0 12px 12px 0}
+.rv{position:absolute;left:calc(50% - 15px);width:30px;top:30px;bottom:0;background:var(--rose);transition:transform .6s,opacity .6s;transform-origin:top}
+.gl{position:absolute;left:0;right:0;top:34px;height:60px;border-radius:12px;background:repeating-linear-gradient(45deg,#d9931a 0 14px,#e8a83a 14px 28px);box-shadow:0 8px 14px rgba(0,0,0,.18);transition:transform 1s cubic-bezier(.4,0,.6,1),opacity .9s}
+.gl:after{content:"";position:absolute;left:calc(50% - 15px);width:30px;top:0;bottom:0;background:var(--rose)}
+.bow{position:absolute;left:0;right:0;top:-6px;font-size:4.4rem;line-height:1;transition:transform 1s cubic-bezier(.3,0,.5,1),opacity .9s}
+#giftbtn.open{animation:none}
+#giftbtn.open .bow{transform:translateY(-330px) rotate(50deg);opacity:0}
+#giftbtn.open .gl{transform:translateY(-240px) rotate(-16deg);opacity:0}
+#giftbtn.open .rv{transform:scaleY(0);opacity:0}
+#giftbtn.open .gh.l{transform:translate(-150px,90px) rotate(-16deg);opacity:0}
+#giftbtn.open .gh.r{transform:translate(150px,90px) rotate(16deg);opacity:0}
+canvas{position:fixed;inset:0;pointer-events:none;z-index:300}
+</style>
+</head>
+<body>
+<canvas id="cv"></canvas>
+<button id="snd" aria-label="Toggle music">🔊</button>
+<button id="memc">📖 See everything</button>
+<div id="pop"><div id="pcard"></div></div>
+
+<div class="scene" id="sc0"><section class="hero">
+  <p class="eyebrow">October 2026 · edition 29</p>
+  <h1>Happy birthday,<br><em id="nm">Bob</em></h1>
+  <p class="aside">(We'll need to find you a new name, since this year you gave up the role of fixing problematic men.)</p>
+  <div class="infant" id="infant"></div>
+  <div class="warn">⚠️ Warning: this is not gonna be cheesy. Please proceed with caution.</div>
+  <button class="btn" id="go1">Proceed, I guess</button>
+</section></div>
+
+<div class="scene" id="sc00"><div class="gw">
+  <p class="eyebrow">for you</p>
+  <button id="giftbtn" aria-label="Unwrap your gift"><div class="gb"><div class="gh l"></div><div class="gh r"></div></div><div class="rv"></div><div class="gl"></div><div class="bow">🎀</div></button>
+  <p class="sub" style="margin-top:26px;animation:pulse 1.8s infinite">Tap to unwrap</p>
+</div></div>
+
+<div class="scene" id="sc1">
+<section class="sec" id="s1">
+  <h2>10 ways to tell you're getting old</h2>
+  <p class="sub">Roasting, but with love. Mostly.</p>
+  <ol class="list" id="old"></ol>
+  <div class="c" style="margin-top:20px"><button class="btn alt" id="rn"></button></div>
+  <div class="bwrap" id="b1" style="display:none"><button class="balloon" data-next="2">🎈<span>Pop me to continue</span></button></div>
+</section>
+
+<section class="sec c" id="s2" style="display:none">
+  <h2>Sorry, I think I need to make up for roasting so hard</h2>
+  <p class="sub">(I'm not sorry.) Let's celebrate you, one shade of you at a time.</p>
+  <div class="deck" id="deck"></div>
+  <div id="cnt"></div>
+  <p class="sub" id="dh" style="font-size:.85rem;margin-top:6px">Swipe each card away →</p>
+  <div class="bwrap" id="b2" style="display:none"><p class="sub">That's all of you. (For now.)</p><button class="balloon" data-next="3">🎈<span>Pop me to continue</span></button></div>
+</section>
+
+<section class="sec c" id="s3" style="display:none">
+  <h2>So maybe a little cheesy never hurt anyone</h2>
+  <p class="sub">We're also celebrating 10 years of celebrating our birthdays (and break-ups) together.</p>
+  <div id="rail"></div>
+  <div id="tcard"></div>
+  <div id="tall"></div>
+  <button class="btn alt" id="tnext"></button>
+  <div id="b3" style="display:none"><h2 style="margin-top:22px">Here's to a decade of us 🥂</h2>
+  <div class="bwrap"><button class="balloon" data-next="4">🎈<span>Pop me to continue</span></button></div></div>
+</section>
+
+<section class="sec" id="s4" style="display:none">
+  <p class="eyebrow">Gifts 🎁</p>
+  <h2>You'll have to get your ass to work for this one</h2>
+  <p class="sub">Make the right guess and get your gift. Tap a box, type, then hit <b>Submit guess</b>. You get <b>3 💡 hints</b> for the whole game, so use them wisely. You can skip any single gift with 🏳️ <b>I give up</b> (Biodegradable will hand that one over in person). The final gift stays locked until everything else is done.</p>
+  <div id="lives"></div>
+  <div class="wrap"><div id="grid"></div></div>
+  <div id="bar"><div id="bt">Tap any box to begin.</div><div id="gb"></div><div id="bh"></div>
+    <div class="btns"><button class="btn alt" id="sub" disabled>Submit guess</button><button class="btn ghost" id="hb" disabled>💡 Hint</button><button class="btn ghost" id="gv" disabled>🏳️ I give up</button></div><div id="msg" style="margin-top:8px"></div></div>
+  <div id="lip"><div class="im" id="lipim"></div><p>A shade only you can slay, and here's proof 💄</p></div>
+  <div class="cols"><div><h3>Across</h3><ul id="ac"></ul></div><div><h3>Down</h3><ul id="dn"></ul></div></div>
+  <div id="gu"></div>
+  <div class="c" style="margin-top:28px"><button class="btn ghost" id="keybtn">🔑 Answer key</button></div>
+  <div class="bwrap" id="b4" style="display:none"><button class="balloon" data-next="5">🎈<span>Pop me to continue</span></button></div>
+</section>
+
+<section class="sec c" id="s5" style="display:none">
+  <h2>What I wish for you this year, and forever</h2>
+  <p class="sub" style="font-size:1.15rem;color:var(--ink)">That you keep finding reasons to feel this much joy and happiness, forever.</p>
+  <div class="vid" id="vid"></div>
+  <p class="sign">Yours,<br>Biodegradable 🌱</p>
+  
+</section>
+</div>
+
+<script>
+const NAME="Bob";
+// PHOTOS: infant, s1..s17, y2016..y2026, lipstick, video.  MUSIC: m0..m5 (optional audio file URLs; empty = built-in synth tune)
+const PHOTOS={}, MUSIC={};
+const $=id=>document.getElementById(id);
+const ph=(k,l)=>PHOTOS[k]?`<img src="${PHOTOS[k]}" alt="">`:`<div class="ph"><span>📷</span>${l||'photo'}</div>`;
+$('nm').textContent=NAME;$('infant').innerHTML=ph('infant','infant photo');$('lipim').innerHTML=ph('lipstick','lipstick photo');
+$('vid').innerHTML=PHOTOS.video?`<video src="${PHOTOS.video}" controls playsinline></video>`:`<div class="ph" style="height:100%"><span>🎬</span>video goes here</div>`;
+
+/* ---------- confetti / popper ---------- */
+const cv=$('cv'),cx=cv.getContext('2d');let P=[],run=false;
+function sz(){cv.width=innerWidth;cv.height=innerHeight}sz();addEventListener('resize',sz);
+function burst(x,y,ang,n=70,spd=15){const cols=['#e8a317','#d9667a','#7fbf70','#6aa7d9','#f6ebdc','#b48be0'];
+  for(let i=0;i<n;i++){const a=ang+(Math.random()-.5)*.9,v=spd*(.45+Math.random()*.7);P.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,s:5+Math.random()*6,c:cols[i%6],r:Math.random()*6,vr:(Math.random()-.5)*.4,l:130+Math.random()*50,rd:Math.random()<.3})}
+  if(!run){run=true;loop()}}
+function loop(){cx.clearRect(0,0,cv.width,cv.height);P=P.filter(p=>p.l-->0);
+  P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.38;p.vx*=.985;p.r+=p.vr;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillStyle=p.c;cx.globalAlpha=Math.min(1,p.l/30);p.rd?(cx.beginPath(),cx.arc(0,0,p.s/2,0,7),cx.fill()):cx.fillRect(-p.s/2,-p.s/3,p.s,p.s*.6);cx.restore()});
+  if(P.length)requestAnimationFrame(loop);else run=false}
+const popper=(x,y)=>{burst(x,y,-Math.PI/2,90,17);burst(x,y,-Math.PI/2-.5,40,13);burst(x,y,-Math.PI/2+.5,40,13)};
+const cornerPoppers=()=>{burst(0,innerHeight,-1.05,80,24);burst(innerWidth,innerHeight,-Math.PI+1.05,80,24)};
+
+/* ---------- music (built-in synth, one tune per scene) ---------- */
+const TR=[
+{bpm:112,root:261.6,sc:[0,2,4,7,9],pat:[0,2,4,2,1,3,5,3],w:'triangle',g:.07},
+{bpm:128,root:220,sc:[0,3,5,7,10],pat:[0,-1,2,4,-1,2,3,1],w:'square',g:.03},
+{bpm:88,root:293.7,sc:[0,2,4,6,7,9,11],pat:[0,2,4,6,4,2,1,3],w:'sine',g:.09},
+{bpm:72,root:220,sc:[0,2,3,5,7,8,10],pat:[0,-1,2,-1,4,-1,3,-1],w:'triangle',g:.09},
+{bpm:120,root:329.6,sc:[0,2,4,7,9],pat:[0,3,1,4,2,-1,4,2],w:'sawtooth',g:.022},
+{bpm:64,root:196,sc:[0,2,4,5,7,9,11],pat:[0,-1,2,-1,4,-1,2,-1],w:'sine',g:.1}];
+let AC=null,M=null,tm=null,aud=null,muted=false,started=false,curTrack=0,cur=0;
+function tone(f,d,w,g){const t=AC.currentTime,o=AC.createOscillator(),e=AC.createGain();o.type=w;o.frequency.value=f;e.gain.setValueAtTime(0,t);e.gain.linearRampToValueAtTime(g,t+.012);e.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(e);e.connect(M);o.start(t);o.stop(t+d+.05)}
+function music(k){if(started&&k===curTrack&&(tm||aud))return;curTrack=k;if(!started)return;
+  clearInterval(tm);if(aud){aud.pause();aud=null}
+  if(M){const old=M;old.gain.linearRampToValueAtTime(0,AC.currentTime+.6);setTimeout(()=>old.disconnect(),800)}
+  if(MUSIC['m'+k]){aud=new Audio(MUSIC['m'+k]);aud.loop=true;aud.muted=muted;aud.play().catch(()=>{});return}
+  const T=TR[k],L=T.sc.length;M=AC.createGain();M.gain.value=muted?0:1;M.connect(AC.destination);let s=0;
+  const fr=d=>{const o=Math.floor(d/L);return T.root*Math.pow(2,(T.sc[((d%L)+L)%L]+12*o)/12)};
+  tm=setInterval(()=>{const lp=Math.floor(s/T.pat.length),p=T.pat[s%T.pat.length],sh=[0,0,2,1][lp%4];
+    if(p>=0)tone(fr(p+sh+L),.35,T.w,T.g);
+    if(s%4===0)tone(fr(sh)/2,.9,'sine',T.g*1.3);
+    s++},30000/T.bpm)}
+function startAudio(){if(started)return;started=true;AC=new (window.AudioContext||window.webkitAudioContext)();AC.resume();music(curTrack)}
+addEventListener('pointerdown',startAudio,{once:true});
+$('snd').onclick=e=>{e.stopPropagation();startAudio();muted=!muted;$('snd').textContent=muted?'🔇':'🔊';if(M)M.gain.value=muted?0:1;if(aud)aud.muted=muted;if(AC)muted?AC.suspend():AC.resume()};
+
+/* ---------- flow ---------- */
+function enter(x,y){const to=$('sc1');to.style.display='block';to.scrollTop=0;
+  const a=to.animate([{clipPath:`circle(0% at ${x}px ${y}px)`},{clipPath:`circle(150% at ${x}px ${y}px)`}],{duration:1000,easing:'cubic-bezier(.6,0,.2,1)'});
+  a.onfinish=()=>{$('sc0').style.display='none'};music(1)}
+function reveal(n){const el=$('s'+n);el.style.display='block';
+  el.animate([{clipPath:'circle(0% at 50% 0%)'},{clipPath:'circle(150% at 50% 0%)'}],{duration:1000,easing:'ease-out'});
+  setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}),60);music(n)}
+$('go1').onclick=e=>{const r=e.target.getBoundingClientRect(),x=r.left+r.width/2,y=r.top;popper(x,y);setTimeout(()=>enter(x,y),650)};
+document.querySelectorAll('.balloon').forEach(b=>b.onclick=()=>{const r=b.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/3;b.disabled=true;b.classList.add('pop');popper(x,y);setTimeout(()=>reveal(+b.dataset.next),550)});
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)music(+e.target.id.slice(1))}),{root:$('sc1'),threshold:.4});
+document.querySelectorAll('.sec').forEach(x=>so.observe(x));
+
+/* ---------- popup ---------- */
+function popup(h,ms){const p=$('pop');$('pcard').innerHTML=h;p.style.display='flex';clearTimeout(popup.t);if(ms)popup.t=setTimeout(()=>p.style.display='none',ms);}
+$('pop').onclick=e=>{if(e.target.id==='pop')$('pop').style.display='none'};
+
+/* ---------- Section 1 ---------- */
+const OLD=[
+"You're closer to 35 than to 18.",
+"Last year running in your 20s.",
+"School was a decade ago. You look older; Mohan Ma'am still looks exactly the same.",
+"You (and I) can't have drunken nights anymore. The hangover now has a payment plan.",
+"Our sleepovers basically mean we talk for a couple of hours and then sleep by 12.",
+"Aryaman is probably gonna start receiving rishtas in a year or two.",
+"In 2 years you'll need a bone density check-up meant for people 30 and above.",
+"\"Let's go out\" now involves checking the reviews, the parking, and the earliest exit.",
+"Your back makes sound effects when you stand up, and you've stopped being embarrassed by them.",
+"A \"quick nap\" is now a scheduled, protected, non-negotiable event."];
+const lis=OLD.map(t=>{const li=document.createElement('li');li.textContent=t;li.className='hid';$('old').appendChild(li);return li});
+let rv=0;const rb=()=>{$('rn').textContent=rv?`Next reason (${rv}/10) ↓`:'Show me the first reason'};rb();
+$('rn').onclick=()=>{const li=lis[rv++];li.classList.remove('hid');li.classList.add('rise');li.scrollIntoView({behavior:'smooth',block:'center'});if(rv>=lis.length){$('rn').style.display='none';$('b1').style.display='block'}else rb()};
+
+/* ---------- Section 2: swipe-only deck ---------- */
+const CAP=[
+"The one who has loved to sleep since birth.",
+"The one experimenting with her hair every few days, and somehow slaying every single style.",
+"The inner child in you.",
+"The one trying to copy my signature expression.",
+"The one from Ice Age.",
+"The one who's sleazy.",
+"The one who's always a diva.",
+"The one with absolutely zero tolerance for my jokes.",
+"The sanskari one.",
+"The one with childlike excitement.",
+"When you find out I got the ick again.",
+"The one with thalassophilia, meant to live in the ocean.",
+"When you're pissed off that I did something wrong, AND pissed off that I'm pissed off about something you did wrong.",
+"The one who can get every body part tattooed like a boss.",
+"The one who likes things in particular ways, and gets joy when someone remembers. Like receiving flowers as they are.",
+"New year, new you, every year. (Literally 3 different years, same caption on your insta.)",
+"The one with gifts as her love language."];
+const deck=$('deck');let idx=0;
+const cards=CAP.map((t,i)=>{const c=document.createElement('div');c.className='card';c.innerHTML=`<div class="im">${ph('s'+(i+1),'photo '+(i+1))}</div><div class="no">SHADE ${String(i+1).padStart(2,'0')} / ${CAP.length}</div><p>${t}</p>`;c.dir=1;deck.appendChild(c);return c});
+function lay(){cards.forEach((c,i)=>{const o=i-idx;c.style.transition='';
+  if(o<0){c.style.transform=`translateX(${c.dir*140}%) rotate(${c.dir*22}deg)`;c.style.opacity=0;c.style.pointerEvents='none'}
+  else if(o<3){c.style.transform=`translateY(${o*14}px) scale(${1-o*.05}) rotate(${o?(i%2?2.5:-2.5):0}deg)`;c.style.opacity=1;c.style.zIndex=100-o;c.style.pointerEvents=o?'none':'auto'}
+  else{c.style.opacity=0;c.style.transform='scale(.85)';c.style.pointerEvents='none'}});
+  $('cnt').textContent=Math.min(idx+1,CAP.length)+' / '+CAP.length;
+  if(idx>=CAP.length){$('b2').style.display='block';$('dh').style.display='none'}}
+let sx=null,cc=null;
+deck.addEventListener('pointerdown',e=>{if(idx>=CAP.length)return;cc=cards[idx];sx=e.clientX;cc.style.transition='none';deck.setPointerCapture(e.pointerId)});
+deck.addEventListener('pointermove',e=>{if(sx===null)return;const dx=e.clientX-sx;cc.style.transform=`translateX(${dx}px) rotate(${dx/16}deg)`});
+deck.addEventListener('pointerup',e=>{if(sx===null)return;const dx=e.clientX-sx;sx=null;cc.style.transition='';if(Math.abs(dx)>80){cc.dir=dx>0?1:-1;idx++}lay()});
+lay();
+
+/* ---------- Section 3: one-photo-at-a-time timeline ---------- */
+let reached=0,shown=0;const YRS=[];for(let y=2016;y<=2026;y++)YRS.push(y);
+function tl(){const r=$('rail');r.innerHTML='';
+  for(let i=0;i<=reached;i++){if(i)r.insertAdjacentHTML('beforeend','<div class="seg"></div>');const b=document.createElement('button');b.className='dot'+(i===shown?' cur':'');b.innerHTML=`<i></i>${YRS[i]}`;b.onclick=()=>{shown=i;tl()};r.appendChild(b)}
+  const y=YRS[shown];$('tcard').style.animation='none';void $('tcard').offsetWidth;$('tcard').style.animation='';
+  $('tcard').innerHTML=`<div class="im">${ph('y'+y,'photo from '+y)}</div><b>${y}</b>`;
+  const last=reached===YRS.length-1;$('tnext').style.display=(last||shown<reached)?'none':'inline-block';
+  if(!last)$('tnext').textContent=`On to ${YRS[reached+1]} →`;
+  $('b3').style.display=last?'block':'none'}
+$('tnext').onclick=()=>{reached++;shown=reached;tl()};tl();
+
+/* ---------- Section 4: crossword ---------- */
+const GIFTS=[
+["OVERSIZED SHIRT","Oversized shirt","Stripey, slouchy, and you can slay it anywhere.","Think stripes, and think stolen-from-the-boys' wardrobe, but better.","A stripey oversized shirt you can slay anywhere."],
+["TOP","A top","A blouse for low-effort days.","The shortest answer on the board: 3 letters.","A blouse for low effort days."],
+["PHONE HOLDER","Phone holder","Watch your rom-coms hands-free, anywhere.","Starts with the thing in your hand right now.","A phone holder so you can watch your rom coms anywhere."],
+["SHELL BRACELET","Shell bracelet","Made of your favourite pieces from the ocean, worn on the wrist.","Two words. The first one is also what you'd collect on a beach.","A bracelet made of your favourite pieces from the ocean."],
+["SEA SHELL","A sea shell","From a beach that's calling for you.","Two words. You've held one to your ear.","A sea shell, from a beach that's calling for you."],
+["NECKLACE","Necklace","Will go well with your beach outfits.","Not for the wrist or the ears. Think chain, think collarbone.","A necklace that'll go well with your beach outfits."],
+["LIPSTICK","Lipstick","A shade only you can slay, and here's proof.","It's a shade. A photo is waiting for you.","A shade of lipstick only you can slay, and here's proof."],
+["WEBSITE","This website","A birthday memory you don't have to store anywhere.","You're inside it right now.","A birthday memory you don't have to worry about storing away anywhere."],
+["SNEAKERS","Sneakers","The final gift. Built for walking with confidence.","Eight letters. Laces, soles, zero heels.","Sneakers for you to continue walking with confidence."],
+["BOOK","A book","From your fav genre, to keep your reading streak on.","Four letters. Pages, a spine, no screens.","From your fav genre, something to keep your reading streak on."],
+["JHUMKAS","Jhumkas","For sanskari days, or to give an outfit an Indian touch.","Plural. Ears, swing, ring.","For days you feel sanskari or want to give an outfit an Indian touch."],
+["CANDLE","A candle","A little something we can put on your cake.","Make a wish, then blow it out.","A little something we can put on your cake."],
+["KEYCHAIN","A keychain from Nainital","To bring you peace and calm, a little something from Nainital.","Hang it on your bag. Tibetan style.","To bring you peace and calm, a little something from Nainital."]];
+const WD=GIFTS.map(g=>({full:g[0],a:g[0].replace(/ /g,''),pat:g[0].split(' ').map(x=>x.length).join(','),nm:g[1],t:g[2],h:g[3],d:g[4]}));
+function mk(seed){let s=seed;return()=>((s=Math.imul(s^s>>>15,1|s+1831565813)),((s^s>>>7)>>>0)/4294967296)}
+function build(rn){
+  const G={},D={},pl=[],un=[];
+  const can=(w,r,c,dr,dc)=>{const id=dr?'d':'a';if(G[(r-dr)+','+(c-dc)]||G[(r+dr*w.length)+','+(c+dc*w.length)])return -1;let x=0;
+    for(let i=0;i<w.length;i++){const R=r+dr*i,C=c+dc*i,k=R+','+C;
+      if(G[k]){if(G[k]!==w[i]||D[k].includes(id))return -1;x++}
+      else if(G[(R+dc)+','+(C+dr)]||G[(R-dc)+','+(C-dr)])return -1}
+    return x};
+  const put=(o,r,c,dr,dc)=>{o.r=r;o.c=c;o.dir=dr?'d':'a';for(let i=0;i<o.a.length;i++){const k=(r+dr*i)+','+(c+dc*i);G[k]=o.a[i];(D[k]=D[k]||[]).push(o.dir)}pl.push(o)};
+  const ord=[...WD].sort((a,b)=>b.a.length-a.a.length+(rn()-.5)*5);
+  put(ord[0],0,0,0,1);
+  for(const o of ord.slice(1)){let best=[],bx=0;
+    for(const k in G){const [R,C]=k.split(',').map(Number);for(let i=0;i<o.a.length;i++)if(o.a[i]===G[k])for(const [dr,dc] of [[0,1],[1,0]]){const r=R-dr*i,c=C-dc*i,x=can(o.a,r,c,dr,dc);if(x>0){if(x>bx){bx=x;best=[]}if(x===bx)best.push([r,c,dr,dc])}}}
+    if(best.length){const b=best[Math.floor(rn()*best.length)];put(o,...b)}else un.push(o)}
+  let mr=-99;pl.forEach(o=>{mr=Math.max(mr,o.r+(o.dir=='d'?o.a.length:1))});
+  un.forEach((o,j)=>{put(o,mr+1+j*2,0,0,1)});
+  const rs=pl.map(o=>o.r),cs=pl.map(o=>o.c);
+  return {pl,un:un.length,area:(Math.max(...pl.map(o=>o.r+(o.dir=='d'?o.a.length:1)))-Math.min(...rs))*(Math.max(...pl.map(o=>o.c+(o.dir=='a'?o.a.length:1)))-Math.min(...cs))}}
+let B=null;for(let t=1;t<=160;t++){const r=build(mk(t*7919));if(!B||r.un<B.un||(r.un===B.un&&r.area<B.area))B=r}
+const W=B.pl,cells={};let minR=99,minC=99,maxR=-99,maxC=-99;
+W.forEach((w,i)=>{w.cells=[];for(let k=0;k<w.a.length;k++){const r=w.r+(w.dir=='d'?k:0),c=w.c+(w.dir=='a'?k:0),key=r+','+c;(cells[key]=cells[key]||{r,c,ch:w.a[k],ws:[]}).ws.push(i);w.cells.push(key);minR=Math.min(minR,r);maxR=Math.max(maxR,r);minC=Math.min(minC,c);maxC=Math.max(maxC,c)}});
+const starts=[...new Set(W.map(w=>w.cells[0]))].map(k=>cells[k]).sort((a,b)=>a.r-b.r||a.c-b.c);
+const num={};starts.forEach((s,i)=>num[s.r+','+s.c]=i+1);W.forEach(w=>w.n=num[w.cells[0]]);
+const g=$('grid');g.style.gridTemplateColumns=`repeat(${maxC-minC+1},28px)`;
+for(let r=minR;r<=maxR;r++)for(let c=minC;c<=maxC;c++){
+  const key=r+','+c,d=document.createElement('div');d.className='cell';const o=cells[key];
+  if(o){d.classList.add('on');o.el=d;if(num[key])d.innerHTML=`<i>${num[key]}</i>`;
+    const inp=document.createElement('input');inp.maxLength=2;inp.autocomplete='off';inp.autocapitalize='characters';inp.spellcheck=false;o.inp=inp;
+    inp.addEventListener('click',()=>pick(key,true));
+    inp.addEventListener('input',()=>{if(inp.readOnly)return;const v=inp.value.toUpperCase().replace(/[^A-Z]/g,'').slice(-1);inp.value=v;if(v)step(1)});
+    inp.addEventListener('keydown',e=>{if(e.key==='Backspace'&&!inp.value){e.preventDefault();step(-1,true)}});
+    d.appendChild(inp)}
+  g.appendChild(d)}
+let cw=0,ck=null,hl=3,fin=false;
+const KEY_PIN=""; // optional: set e.g. "1234" to protect the answer key
+const vals=w=>w.cells.map(k=>cells[k].inp.value.toUpperCase());
+const SN=W.find(w=>w.a==='SNEAKERS');SN.locked=true;
+const res=w=>w.done||w.gave;
+const edit=o=>o.ws.some(i=>{const w=W[i];return !res(w)&&!w.locked});
+function refresh(){Object.values(cells).forEach(o=>{o.el.classList.remove('lk','gv');o.inp.readOnly=!!o.lock||!edit(o);
+  if(!o.lock&&!edit(o))o.el.classList.add(o.ws.every(i=>W[i].locked)?'lk':'gv')})}
+function hearts(){$('lives').textContent='Hints left: '+'💡'.repeat(hl)+'⚪'.repeat(3-hl)}hearts();
+const giftBox=w=>`<div class="gift"><b>Here's your gift 🎁</b><br>${w.d}</div>`;
+function paint(){Object.values(cells).forEach(o=>o.el.classList.remove('hl','act'));
+  if(ck===null)return;const w=W[cw];w.cells.forEach(k=>cells[k].el.classList.add('hl'));cells[ck].el.classList.add('act');
+  $('bt').innerHTML=`<b>${w.n} ${w.dir=='a'?'Across':'Down'}</b>`+(w.locked?'🔒 The final gift. It unlocks once every other gift is done.':`${w.t} <span style="color:var(--mute)">(${w.pat})</span>`);
+  $('gb').innerHTML=w.done?giftBox(w):'';
+  $('bh').textContent=w.gave?'🎁 Ask Biodegradable for this one, in person.':(w.hint&&!w.locked?'💡 '+w.h:'');
+  const off=fin||res(w)||w.locked;$('sub').disabled=off;$('gv').disabled=off;$('hb').disabled=off||!!w.hint||hl<1;
+  $('hb').textContent=w.hint?'💡 Hint used':(hl?`💡 Hint (${hl} left)`:'💡 No hints left')}
+const canType=k=>!cells[k].inp.readOnly;
+function pick(key,tg){const ws=cells[key].ws;
+  if(ws.includes(cw)){if(tg&&ck===key&&ws.length>1)cw=ws.find(x=>x!==cw)}else cw=ws.find(i=>!W[i].locked)??ws[0];
+  const arr=W[cw].cells;ck=key;
+  if(canType(key))cells[key].inp.focus();
+  else{const nx=arr.slice(arr.indexOf(key)).find(canType)||arr.find(canType);if(nx){ck=nx;cells[nx].inp.focus()}}
+  paint()}
+function step(d,clr){const a=W[cw].cells;let i=a.indexOf(ck)+d;while(a[i]&&!canType(a[i]))i+=d;const n=a[i];if(!n)return;ck=n;const o=cells[n];o.inp.focus();if(clr)o.inp.value='';paint()}
+W.forEach((w,i)=>{const li=document.createElement('li');li.id='c'+i;li.innerHTML=`<span class="n">${w.n}</span><span>${w.locked?'🔒 The final gift (unlocks last)':w.t+' <span style="color:var(--mute)">('+w.pat+')</span>'}</span><span class="s"></span><em></em><div class="gx"></div>`;li.onclick=()=>{cw=i;pick(w.cells[0],false)};$(w.dir=='a'?'ac':'dn').appendChild(li)});
+const nDone=()=>W.filter(w=>w.done).length;
+function solved(w){w.done=true;w.cells.forEach(k=>{const o=cells[k];o.lock=true;o.inp.value=o.ch;o.el.classList.remove('bad');o.el.classList.add('ok')});
+  const li=$('c'+W.indexOf(w));li.classList.add('ok');li.classList.remove('gave');li.querySelector('.s').textContent='✓';li.querySelector('.gx').innerHTML=giftBox(w);
+  li.querySelector('span:nth-child(2)').innerHTML=w.t;
+  if(w.a==='LIPSTICK')$('lip').style.display='block';refresh()}
+function after(delay){
+  if(SN.locked&&W.filter(w=>w!==SN).every(res)){SN.locked=false;refresh();$('c'+W.indexOf(SN)).querySelector('span:nth-child(2)').innerHTML=SN.t+' <span style="color:var(--mute)">('+SN.pat+')</span>';
+    setTimeout(()=>{cornerPoppers();popup(`<div class="em">🎁</div><h2>The final gift is unlocked!</h2><p style="color:var(--mute)">Just one left. Go get it.</p>`,3000)},delay)}
+  if(W.every(res)&&!fin)finish(delay)}
+function finish(delay){fin=true;paint();$('b4').style.display='block';
+  const left=W.filter(w=>w.gave);
+  if(left.length){$('gu').style.display='block';$('gu').innerHTML=`<div style="font-size:2.2rem">🎁</div><h2 style="font-size:1.4rem;margin:6px 0">${left.length} gift${left.length>1?'s are':' is'} still wrapped</h2><p style="margin:0">They're yours, just not on screen. Ask <b>Biodegradable</b> and they'll hand ${left.length>1?'them':'it'} over in person.</p><ul>${left.map(w=>`<li>🎁 ${w.t}</li>`).join('')}</ul>`}
+  else setTimeout(()=>{cornerPoppers();popup(`<div class="em">🏆</div><h2>You got them all!</h2><p style="color:var(--mute)">Every single gift. Now come and collect them.</p>`)},delay+300)}
+function win(w){solved(w);cornerPoppers();const lp=w.a==='LIPSTICK',ms=lp?6500:4200;
+  popup(`<div class="em">🎉</div><h2>Gift unlocked!</h2><p style="margin:0 0 6px;font-size:1.15rem"><b>${w.nm}</b></p>${giftBox(w)}${lp?`<div class="im">${ph('lipstick','lipstick photo')}</div>`:''}<p style="color:var(--mute);margin:8px 0 0;font-size:.85rem">${nDone()} of ${W.length} unlocked</p>`,ms);
+  $('msg').textContent='';paint();after(ms+200)}
+$('sub').onclick=()=>{if(fin||ck===null)return;const w=W[cw],v=vals(w);
+  if(v.some(x=>!x)){$('msg').textContent='Fill every box first.';return}
+  if(v.join('')===w.a){win(w);return}
+  w.cells.forEach(k=>{if(!cells[k].lock)cells[k].el.classList.add('bad')});
+  $('msg').textContent='Not quite. Try again!';
+  setTimeout(()=>{w.cells.forEach(k=>{const o=cells[k];if(!o.lock){o.inp.value='';o.el.classList.remove('bad')}})},700)};
+$('hb').onclick=()=>{if(ck===null)return;const w=W[cw];if(w.hint||res(w)||w.locked||hl<1)return;w.hint=true;hl--;hearts();$('c'+W.indexOf(w)).querySelector('em').textContent='💡 '+w.h;paint()};
+function giveUp(w,quiet){w.gave=true;w.locked=false;const li=$('c'+W.indexOf(w));li.classList.add('gave');li.querySelector('.s').textContent='🎁';li.querySelector('.gx').innerHTML='<div class="gift">Ask <b>Biodegradable</b> for this one, in person 🎁</div>';refresh();if(!quiet){paint();after(0)}}
+$('gv').onclick=()=>{if(ck===null)return;const w=W[cw];if(res(w)||w.locked)return;
+  popup(`<div class="em">🏳️</div><h2>Give up on this one?</h2><p style="color:var(--mute)">Only this gift. Biodegradable will hand it over in person.</p><div class="btns" style="justify-content:center"><button class="btn alt" id="yes">Yes, I give up</button><button class="btn ghost" onclick="$('pop').style.display='none'">Keep trying</button></div>`);
+  $('yes').onclick=()=>{$('pop').style.display='none';giveUp(w)}};
+
+
+/* answer key + memory mode */
+function revealAll(){W.forEach(w=>{if(!w.done){w.locked=false;solved(w)}});fin=true;$('b4').style.display='block';$('gu').style.display='none';$('msg').textContent='';paint()}
+function showKey(){const rows=[...W].sort((a,b)=>a.n-b.n||(a.dir<b.dir?-1:1)).map(w=>`<li><b>${w.n} ${w.dir=='a'?'Across':'Down'}</b> · ${w.full} <small>(${w.nm})</small></li>`).join('');
+  popup(`<div class="em">🔑</div><h2>Answer key</h2><ul class="keyl">${rows}</ul><div class="btns" style="justify-content:center"><button class="btn alt" id="fill">Fill in the crossword</button><button class="btn ghost" onclick="$('pop').style.display='none'">Close</button></div>`);
+  $('fill').onclick=()=>{$('pop').style.display='none';revealAll()}}
+$('keybtn').onclick=()=>{popup(`<div class="em">🔑</div><h2>Answer key</h2><p style="color:var(--mute)">Spoiler alert: this shows every answer.</p>${KEY_PIN?'<input id="pin" placeholder="PIN" inputmode="numeric" style="padding:10px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);text-align:center;margin-bottom:10px">':''}<div class="btns" style="justify-content:center"><button class="btn alt" id="ky">Show answers</button><button class="btn ghost" onclick="$('pop').style.display='none'">Cancel</button></div>`);
+  $('ky').onclick=()=>{if(KEY_PIN&&$('pin').value!==KEY_PIN){$('pin').style.outline='2px solid #d9667a';return}showKey()}};
+$('tall').innerHTML=YRS.map(y=>`<div class="tc"><div class="im">${ph('y'+y,'photo from '+y)}</div><b>${y}</b></div>`).join('');
+function memory(){document.body.classList.add('mem');lis.forEach(l=>l.classList.remove('hid'));revealAll();
+  $('sc0').style.display='none';$('sc00').style.display='none';const m=$('sc1');m.style.display='block';m.scrollTop=0;music(1)}
+$('memc').onclick=()=>{popup(`<div class="em">📖</div><h2>See everything?</h2><p style="color:var(--mute)">This opens the whole website at once, answers and all. Spoiler alert!</p><div class="btns" style="justify-content:center"><button class="btn alt" id="mgo">Show me everything</button><button class="btn ghost" onclick="$('pop').style.display='none'">Not yet</button></div>`);$('mgo').onclick=()=>{$('pop').style.display='none';memory()}};
+refresh();
+$('giftbtn').onclick=()=>{const b=$('giftbtn'),r=b.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;b.classList.add('open');b.disabled=true;
+  setTimeout(()=>popper(x,y),450);setTimeout(()=>{$('sc00').style.opacity=0},1600);setTimeout(()=>{$('sc00').style.display='none'},2500)};
+if(location.hash==='#memory')memory();
+</script>
+</body>
+</html>
